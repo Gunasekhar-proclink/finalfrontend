@@ -1,0 +1,14 @@
+<section class="movie-list-container">
+  @if(isLoading){
+  <h1>Loading...</h1>
+  } @for (photo of photoList; track photo.photoId){
+  <app-photo
+    [photo]="photo"
+    (deleteMovieEvent)="deleteMovieP($event)"
+    (editMovieEvent)="editMovieP($event)" 
+    [id]="photo.photoId"
+  />
+  }
+</section>
+
+<h1>{{ msg }}</h1>
