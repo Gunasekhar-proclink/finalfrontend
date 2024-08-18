@@ -10,11 +10,14 @@ import { Router } from '@angular/router';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  constructor( private router: Router) {}
 
+  constructor( private router: Router) {}
+  signup() {
+    this.router.navigate(['user/signup'])
+    }
   login() {
     console.log('Login clicked');
-    this.router.navigate(['/login']) ;
+    this.router.navigate(['user/login']) ;
     
   }
 
