@@ -1,0 +1,27 @@
+<!-- Todo -->
+<form [formGroup]="signUpForm" (ngSubmit)="signup()" class="add-movie-form">
+    <!-- <form class="add-movie-form"> -->
+    <mat-form-field>
+      <mat-label>UserName</mat-label>
+      <input matInput placeholder="Srujan" formControlName="userName" />
+  
+      @if(userName?.touched && userName?.hasError('required') ){
+      <mat-error>UserName is <strong>required</strong></mat-error>
+      } @if(userName?.touched && userName?.hasError('minlength') ){
+      <mat-error>Please provide full movie userName 😁</mat-error>
+      }
+    </mat-form-field>
+  
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input
+        type="text"
+        matInput
+        placeholder="123467abc"
+        formControlName="password"
+      />
+    </mat-form-field>
+  
+    <button mat-raised-button type="submit">Signup</button>
+  </form>
+  
