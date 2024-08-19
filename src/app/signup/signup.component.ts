@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LoginService } from '../login.service';
+import { SignupService } from '../signup.service';
 
 @Component({
   selector: 'app-signup',
@@ -21,7 +22,7 @@ import { LoginService } from '../login.service';
 })
 export class SignupComponent {
   signUpForm!: FormGroup;
-  constructor(private fb: FormBuilder, private loginService: LoginService) {
+  constructor(private fb: FormBuilder, private signupService: SignupService) {
     this.signUpForm = this.fb.group({
       userName: ['', [Validators.required, Validators.minLength(3)]],
       password: '',
@@ -34,8 +35,6 @@ export class SignupComponent {
 
   signup() {
     console.log(this.signUpForm.value);
-    this.loginService.login(this.signUpForm.value).then((data) => {
-      localStorage.setItem('token', data.token);
-    });
+    this.signupService.signup(this.signUpForm.value);
   }
 }

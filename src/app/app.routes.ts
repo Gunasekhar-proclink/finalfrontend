@@ -8,6 +8,8 @@ import { PhotoListComponent } from './photo-list/photo-list.component';
 import { AddPhotoComponent } from './add-photo/add-photo.component';
 import { EditPhotoComponent } from './edit-photo/edit-photo.component';
 import { PhotoDetailsComponent } from './photo-details/photo-details.component';
+import { MyphotoAddComponent } from './myphoto-add/myphoto-add.component';
+import { MyphotoEditComponent } from './myphoto-edit/myphoto-edit.component';
 
 export const routes: Routes = [
 
@@ -39,6 +41,21 @@ export const routes: Routes = [
           { path: 'add', component: AddPhotoComponent },
           { path: 'edit/:id', component: EditPhotoComponent },
           { path: ':id', component: PhotoDetailsComponent },
+        ],
+      },
+      {
+        path: 'photos/user/username',
+        children: [
+         
+          {
+            path: '',
+            loadComponent: () =>
+              import('./myphotos/myphotos.component').then(
+                (c) => c.MyphotosComponent
+              ),
+          }, // lazy load
+          { path: 'add', component: MyphotoAddComponent },
+          { path: 'edit/:id', component: MyphotoEditComponent },
         ],
       },
       {

@@ -38,7 +38,8 @@ export class LoginComponent {
   login() {
     console.log(this.loginForm.value);
     this.loginService.login(this.loginForm.value).then((data) => {
-      localStorage.setItem('token', data.token);
-    });
+      localStorage.setItem('token', data.token) ;
+      localStorage.setItem('roleId' , data.roleId) ; 
+    }); 
   }
 }

@@ -2,31 +2,17 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { API } from './global';
 import { HttpClient } from '@angular/common/http';
+import {Iphoto} from "./photos.service"
 
-export interface Iphoto {
-  photoId: string;
-  url: string;
-  description: string;
-  createdAt: string;
-  username: string;
-  type: string;
-
-}
 
 @Injectable({
   providedIn: 'root'
 })
-export class PhotosService {
+export class MyPhotoService {
   
   constructor(private router: Router , private http: HttpClient) { }
 
 
-  searchUser(searchTerm: string) {
-    return this.http.get<Iphoto[]>(
-      `https://6402db84f61d96ac487212a6.mockapi.io/users?search=${searchTerm}`
-    );
-  }
- 
   async addMovie(newPhoto: Iphoto) {    // working 
     const res = await fetch(`${API}/movies`, {
       method: 'POST',
@@ -50,8 +36,8 @@ export class PhotosService {
   }
 
 
-  async getAllMoviesP(): Promise<Iphoto[]> {      // Working 
-    const res = await fetch(`${API}/photos`);
+  async getAllPhotosByUserNameP(): Promise<Iphoto[]> {      // Working 
+    const res = await fetch(`${API}/photos/user/`);
     return await res.json();
   }
 
