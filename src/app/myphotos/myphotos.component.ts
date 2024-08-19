@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {Iphoto} from "../photos.service" ;
 import { Router } from '@angular/router';
-import { MyPhotoService } from '../myphoto.service';
+import { MyphotoService } from '../myphoto.service';
 import { MyphotoPhotoComponent } from '../myphoto-photo/myphoto-photo.component';
 import {
   FormArray,
@@ -29,7 +29,7 @@ export class MyphotosComponent {
     photoName: Iphoto[] = [];
   
   
-    constructor(private fb: FormBuilder, public myphotoService: MyPhotoService, private router: Router) {}
+    constructor(private fb: FormBuilder, public myphotoService: MyphotoService, private router: Router) {}
   
     addmovie() {
       this.router.navigate(['/photos/add'])
@@ -40,8 +40,9 @@ export class MyphotosComponent {
     
       loadMovies() {
         this.myphotoService
-          .getAllPhotosByUserNameP()
+          .getAllMoviesP()
           .then((data) => {
+            console.log(data)
             this.photoList = data;
             this.isLoading = false;
           })

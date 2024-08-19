@@ -4,7 +4,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { EventEmitter, Input, Output } from '@angular/core'; 
-import { MyPhotoService } from '../myphoto.service';
+import { MyphotoService } from '../myphoto.service';
 import { Router, RouterLink } from '@angular/router';
 import { Iphoto } from '../photos.service';
 

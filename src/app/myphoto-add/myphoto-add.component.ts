@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Iphoto } from '../photos.service';
-import { MyPhotoService } from '../myphoto.service';
+import { MyphotoService } from '../myphoto.service';
 import { Router } from '@angular/router';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgFor } from '@angular/common';
@@ -35,7 +35,7 @@ export class MyphotoAddComponent {
 
 
   constructor(
-    public myphotoService: MyPhotoService,
+    public myphotoService: MyphotoService,
     private router: Router,
     private fb: FormBuilder
   ) {

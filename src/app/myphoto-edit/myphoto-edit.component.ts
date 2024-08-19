@@ -10,7 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Iphoto } from '../photos.service';
-import { MyPhotoService } from '../myphoto.service';
+import { MyphotoService } from '../myphoto.service';
 import { UpperCasePipe } from '@angular/common';
 
 @Component({
@@ -28,7 +28,7 @@ export class MyphotoEditComponent {
   photoForm: FormGroup;
 
   constructor(
-    public photoService: MyPhotoService,
+    public photoService: MyphotoService,
     private router: Router,
     private fb: FormBuilder,
     private route: ActivatedRoute

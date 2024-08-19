@@ -60,19 +60,18 @@ export class PhotosService {
     return await res.json();
   }
 
-  getMovieByIdP(id: string): Promise<Iphoto> { // working 
-    return fetch(`${API}/photos/${id}`, {
+  async getMovieByIdP(id: string): Promise<Iphoto> { // working 
+    const res = await fetch(`${API}/photos/${id}`, {
       method: 'GET',
       headers: {
         'x-auth-token': localStorage.getItem('token') as string,
       },
-    }).then((res) => {
-      if (res.status != 200) {
-        this.router.navigate(['/login']);
-        throw new Error('Not Authorized');
-      }
-      return res.json();
     });
+    if (res.status != 200) {
+      // this.router.navigate(['/login']);
+      throw new Error('Not Authorized');
+    }
+    return await res.json();
   }
 
 }

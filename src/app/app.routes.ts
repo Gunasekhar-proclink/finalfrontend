@@ -44,7 +44,7 @@ export const routes: Routes = [
         ],
       },
       {
-        path: 'photos/user/username',
+        path: 'photos',
         children: [
          
           {
