@@ -26,12 +26,9 @@ export const routes: Routes = [
         component : SignupComponent , 
       } ,
       {
-        path: 'photos', // url
+        path: 'photos',
         children: [
-          // {
-          //   path: '',
-          //   component: MovieListComponent,
-          // },
+         
           {
             path: '',
             loadComponent: () =>

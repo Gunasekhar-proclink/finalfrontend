@@ -4,24 +4,59 @@ import { Router } from '@angular/router';
 import {PhotosService} from "../photos.service" ; 
 import { PhotoComponent } from '../photo/photo.component';
 
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
+import { debounceTime, switchMap, catchError, of, startWith } from 'rxjs';
+
 @Component({
   selector: 'app-photo-list',
   standalone: true,
-  imports: [PhotoComponent],
+  imports: [PhotoComponent , ReactiveFormsModule],
   templateUrl: './photo-list.component.html',
   styleUrl: './photo-list.component.scss'
 })
 export class PhotoListComponent {
+  searchForm!: FormGroup;
 photoList: Array<Iphoto> = []; 
   isLoading: boolean = true;
   msg = '';
+  photoName: Iphoto[] = [];
 
 
-  constructor(public photoService: PhotosService, private router: Router) {}
+  constructor(private fb: FormBuilder, public photoService: PhotosService, private router: Router) {}
 
-    // After Initialization of the component
+  addmovie() {
+    this.router.navigate(['/photos/add'])
+    }
     ngOnInit() {
       this.loadMovies();
+      this.searchForm
+      .get('search')
+      ?.valueChanges.pipe(
+        startWith(''),
+        debounceTime(300),
+        switchMap((searchTerm) =>
+          this.photoService.searchUser(searchTerm).pipe(
+            catchError((error) => {
+              console.log(error);
+              return of([]);
+            })
+          )
+        )
+      )
+      .subscribe((data) => {
+        console.log(data);
+        this.isLoading = false;
+        this.photoList = data;
+        this.isLoading = false ; 
+      });
     }
   
     loadMovies() {
@@ -42,10 +77,7 @@ photoList: Array<Iphoto> = [];
     }
   
     editMovieP(photo: Iphoto) {
-      // /movies/edit/99
       this.router.navigate(['photos', 'edit', photo.photoId]);
 
-
-      // this.movieService.editMovie(movie).then(() => this.loadMovies());
     }
 }
