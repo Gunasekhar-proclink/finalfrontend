@@ -33,9 +33,9 @@ export class PhotoComponent {
 
   constructor() {}
 
-  toggleSummary() {
-    this.show = !this.show;
-  }
+  // toggleSummary() {
+  //   this.show = !this.show;
+  // }
 
   deleteMovie() {
     console.log('Child ❌', this.photo);

@@ -41,7 +41,7 @@ photoList: Array<Iphoto> = [];
       .get('search')
       ?.valueChanges.pipe(
         startWith(''),
-        debounceTime(300),
+        debounceTime(100),
         switchMap((searchTerm) =>
           this.photoService.searchUser(searchTerm).pipe(
             catchError((error) => {

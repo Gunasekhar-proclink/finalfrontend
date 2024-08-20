@@ -3,8 +3,8 @@
   <mat-card-content>
     <div class="movie-spec">
       <h2 class="movie-title">
-        {{ photo.username }}
-        <button
+        {{ photo.username}}
+        <!-- <button
           mat-icon-button
           aria-label="Toggle summary"
           (click)="toggleSummary()"
@@ -12,7 +12,7 @@
           <mat-icon>{{
             show ? "keyboard_arrow_up" : "keyboard_arrow_down"
           }}</mat-icon>
-        </button>
+        </button> -->
   
         <button
           mat-icon-button
@@ -22,7 +22,7 @@
           <mat-icon>info</mat-icon>
         </button>
       </h2>
-      <p class="movie-rating">⭐ {{ photo.createdAt }}</p>
+      <!-- <p class="movie-rating">⭐ {{ photo.createdAt }}</p> -->
     </div>
   
     <p *ngIf="show" class="movie-summary">{{ photo.description }}</p>
