@@ -7,7 +7,7 @@
     <input placeholder="search..." formControlName="search" />
   </form>
   @for (photo of photoName ; track $index){
-    <h2>{{ photo.username }}</h2>
+    <h2>{{ photo.userName }}</h2>
     } 
   <div class="list-of-movies">@if(!isLoading && photoList.length == 0){
     <h2>No results</h2>

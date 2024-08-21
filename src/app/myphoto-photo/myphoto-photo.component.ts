@@ -7,7 +7,7 @@ import { EventEmitter, Input, Output } from '@angular/core';
 import { MyphotoService } from '../myphoto.service';
 import { Router, RouterLink } from '@angular/router';
 import { Iphoto } from '../photos.service';
-
+import { CommonModule, UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-myphoto-photo',
@@ -16,7 +16,7 @@ import { Iphoto } from '../photos.service';
     MatBadgeModule,
     MatIconModule,
     MatCardModule,
-    RouterLink,],
+    RouterLink, CommonModule],
   templateUrl: './myphoto-photo.component.html',
   styleUrl: './myphoto-photo.component.scss'
 })
@@ -41,5 +41,14 @@ export class MyphotoPhotoComponent {
   editMovie() {
     console.log('Child ❌', this.photo);
     this.editMovieEvent.emit(this.photo);
+  }
+
+  canEditOrDelete(): boolean {
+    const roleId = localStorage.getItem('roleId');
+    const username = localStorage.getItem('userName')
+    if (roleId ) { // Parse the stored JSON
+      return roleId === '0' ||  (this.photo.userName === username) ; // Return true if roleId is '0'
+    }
+    return false; // Default to false if no authData
   }
 }

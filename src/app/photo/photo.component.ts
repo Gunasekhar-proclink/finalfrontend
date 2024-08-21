@@ -8,6 +8,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { CommonModule } from '@angular/common';
+import { UpperCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-photo',
@@ -24,7 +25,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./photo.component.scss']
 })
 export class PhotoComponent {
-  @Input() photo!: Iphoto;
+  @Input() photo!: any;
   @Input() id!: string;
   @Output() deleteMovieEvent = new EventEmitter<Iphoto>();
   @Output() editMovieEvent = new EventEmitter<Iphoto>();
@@ -47,10 +48,12 @@ export class PhotoComponent {
     this.editMovieEvent.emit(this.photo);
   }
 
+ 
   canEditOrDelete(): boolean {
     const roleId = localStorage.getItem('roleId');
-    if (roleId) { // Parse the stored JSON
-      return roleId === '0'; // Return true if roleId is '0'
+    const username = localStorage.getItem('userName')
+    if (roleId ) { // Parse the stored JSON
+      return roleId === '0' ||  (this.photo.userName === username) ; // Return true if roleId is '0'
     }
     return false; // Default to false if no authData
   }

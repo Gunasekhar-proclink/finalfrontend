@@ -1,28 +1,33 @@
 @if(isLoading){
     <h1>Loading...</h1>
     } @if(photo){
-    <div class="movie-container">
-      <iframe
-        width="100%"
-        height="514"
-        [src]="trustedUrl"
-        title="RAAYAN - Official Trailer | Dhanush | Sun Pictures | A.R. Rahman"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe>
     
-      <div class="movie-content">
-        <div class="movie-spec">
-          <h2 class="movie-title">
-            {{ photo.username }}
-          </h2>
-          <p class="movie-rating">⭐ {{ photo.type }}</p>
+      <div class="movie-container">
+        <img [src]="trustedUrl" alt="">
+        <div class="movie-content">
+          <div class="movie-spec">
+            <h2 class="movie-title">
+              {{ photo.userName }}
+            </h2>
+            <p class="movie-rating"> {{ photo.type }}</p>
+          </div>
+          <p class="movie-summary">{{ photo.description }}</p>
         </div>
-        <p class="movie-summary">{{ photo.description }}</p>
       </div>
-    </div>
+        <!-- <iframe
+          width="100%"
+          height="514"
+          [src]="trustedUrl"
+          title="RAAYAN - Official Trailer | Dhanush | Sun Pictures | A.R. Rahman"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe> -->
+      
+        
+      
+    
     }
     
     <h1>{{ msg }}</h1>

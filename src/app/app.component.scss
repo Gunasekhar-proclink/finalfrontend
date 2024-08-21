@@ -1,0 +1,56 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+  }
+  
+  .main {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  header {
+    background-color: #4a90e2;
+    padding: 10px 20px;
+  }
+  
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .nav-links {
+    display: flex;
+    gap: 15px; /* Space between buttons */
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Light hover effect */
+  }
+  
+  .auth-links a {
+    margin-left: 10px; /* Add margin to create space between buttons */
+  }
+  
+  mat-icon {
+    margin-left: 5px; /* Space between text and icon */
+  }
+  
+  .router-outlet {
+    flex: 1; /* Takes the remaining space */
+    padding: 20px;
+    background-color: white;
+  }

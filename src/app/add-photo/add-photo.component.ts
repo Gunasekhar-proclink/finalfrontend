@@ -12,7 +12,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { Iphoto } from '../photos.service';
-import { PhotosService } from '../photos.service';
+// import { PhotosService } from '../photos.service';
+import { MyphotoService } from '../myphoto.service';
 import { Router } from '@angular/router';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { NgFor } from '@angular/common';
@@ -35,20 +36,15 @@ export class AddPhotoComponent {
 
 
   constructor(
-    public photoService: PhotosService,
+    public photoService: MyphotoService,
     private router: Router,
     private fb: FormBuilder
   ) {
     // formGroup -> formControlName
     this.photoForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      poster: '',
-      rating: [
-        '',
-        [Validators.required, Validators.min(1), Validators.max(10)],
-      ],
-      description: '',
+      type: ['', [Validators.required, Validators.minLength(2)]],
       url: '',
+      description: '',
       
     });
   }
@@ -65,14 +61,15 @@ export class AddPhotoComponent {
 
     this.onSubmit();
 
-    // if (this.movieForm.valid) {
-    //   let newMovie: NewMovie = this.movieForm.value;
-
-    //   this.movieService.addMovie(newMovie).then(() => {
-    //     // Move to movies page
-    //     this.router.navigate(['movies']);
-    //   });
-    // }
+    if (this.photoForm.valid) {
+      let newphoto: Iphoto = this.photoForm.value;
+      
+      this.photoService.addMovie(newphoto)
+      .then(() => {
+        // Move to movies page
+        this.router.navigate(['photos']);
+      });
+    }
   }
 
   // getter

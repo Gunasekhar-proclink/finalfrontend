@@ -35,9 +35,8 @@ export class MyphotoEditComponent {
   ) {
     // formGroup -> formControlName
     this.photoForm = this.fb.group({
-      id: '',
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      poster: [
+      type : ['', [Validators.required, Validators.minLength(2)]],
+      url: [
         '',
         [
           Validators.required,
@@ -45,12 +44,7 @@ export class MyphotoEditComponent {
           Validators.pattern(/^https:.*/),
         ],
       ],
-      rating: [
-        '',
-        [Validators.required, Validators.min(1), Validators.max(10)],
-      ],
-      summary: '',
-      trailer: '',
+      description: '',
     });
   }
 

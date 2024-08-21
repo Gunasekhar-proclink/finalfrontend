@@ -8,10 +8,10 @@ export interface Iphoto {
   url: string;
   description: string;
   createdAt: string;
-  username: string;
+  userName: string;
   type: string;
-
 }
+
 
 @Injectable({
   providedIn: 'root'
@@ -28,22 +28,23 @@ export class PhotosService {
   }
  
   async addMovie(newPhoto: Iphoto) {    // working 
-    const res = await fetch(`${API}/movies`, {
+    const res = await fetch(`${API}/photos`, {
       method: 'POST',
       body: JSON.stringify(newPhoto),
       headers: {
-        'Content-type': 'application/json',
+        'x-auth-token': localStorage.getItem('token') as string ,
       },
     });
+    console.log(res)
     return await res.json();
   }
 
   async editMovie(updatedPhoto: Iphoto) { // working 
-    const res = await fetch(`${API}/movies/${updatedPhoto.photoId}`, {
+    const res = await fetch(`${API}/photos/${updatedPhoto.photoId}`, {
       method: 'PUT',
       body: JSON.stringify(updatedPhoto),
       headers: {
-        'Content-type': 'application/json',
+        'x-auth-token': localStorage.getItem('token') as string ,
       },
     });
     return await res.json();
@@ -55,9 +56,21 @@ export class PhotosService {
     return await res.json();
   }
 
-  async deleteMovie(photo: Iphoto) {     // working 
-    const res = await fetch(`${API}/photos/${photo.photoId}`, { method: 'Delete' });
+  async deleteMovie(photo: Iphoto) { // working 
+
+    const res = await fetch(`${API}/photos/${photo.photoId}`, { method: 'Delete'  , 
+      headers : {
+        'x-auth-token' : localStorage.getItem('token') as string , 
+      }
+    } );
+    console.log(res)
     return await res.json();
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userName');
+    localStorage.removeItem('roleId');
   }
 
   async getMovieByIdP(id: string): Promise<Iphoto> { // working 

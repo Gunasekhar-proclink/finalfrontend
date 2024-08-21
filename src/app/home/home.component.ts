@@ -12,14 +12,14 @@ import { Router } from '@angular/router';
 export class HomeComponent {
 
   constructor( private router: Router) {}
-  signup() {
-    this.router.navigate(['user/signup'])
-    }
-  login() {
-    console.log('Login clicked');
-    this.router.navigate(['user/login']) ;
+  // signup() {
+  //   this.router.navigate(['user/signup'])
+  //   }
+  // login() {
+  //   console.log('Login clicked');
+  //   this.router.navigate(['user/login']) ;
     
-  }
+  // }
 
   redirectToPhotos() {
     this.router.navigate(['/photos']);

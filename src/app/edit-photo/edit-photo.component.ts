@@ -12,6 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Iphoto } from '../photos.service';
 import { PhotosService } from '../photos.service';
 import { UpperCasePipe } from '@angular/common';
+import { MyphotoService } from '../myphoto.service';
 
 @Component({
   selector: 'app-edit-photo',
@@ -28,16 +29,15 @@ export class EditPhotoComponent {
   photoForm: FormGroup;
 
   constructor(
-    public photoService: PhotosService,
+    public photoService: MyphotoService,
     private router: Router,
     private fb: FormBuilder,
     private route: ActivatedRoute
   ) {
     // formGroup -> formControlName
     this.photoForm = this.fb.group({
-      id: '',
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      poster: [
+      type: ['', [Validators.required, Validators.minLength(2)]],
+      url: [
         '',
         [
           Validators.required,
@@ -45,12 +45,8 @@ export class EditPhotoComponent {
           Validators.pattern(/^https:.*/),
         ],
       ],
-      rating: [
-        '',
-        [Validators.required, Validators.min(1), Validators.max(10)],
-      ],
-      summary: '',
-      trailer: '',
+      description: '',
+
     });
   }
 
@@ -74,7 +70,7 @@ export class EditPhotoComponent {
 
       this.photoService.editMovie(updatedMovie).then(() => {
         // Move to movies page
-        this.router.navigate(['movies']);
+        this.router.navigate(['photos']);
       });
     }
   }

@@ -32,3 +32,18 @@
     justify-content: space-between;
   }
   
+  .movie-title {
+    font-size: medium;
+    padding-left: 100px;
+  }
+
+  p {
+    font-size: medium;
+    padding-left: 75px;
+  }
+
+  .crud {
+    display :flex ;    
+    justify-content: space-evenly ; 
+    // align-items: space;
+  }

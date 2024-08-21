@@ -14,11 +14,14 @@ import {
   Validators,
 } from '@angular/forms';
 import { debounceTime, switchMap, catchError, of, startWith } from 'rxjs';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormField, MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-photo-list',
   standalone: true,
-  imports: [PhotoComponent , ReactiveFormsModule],
+  imports: [PhotoComponent , ReactiveFormsModule,MatIconModule,MatFormField , MatInputModule , MatFormFieldModule ],
   templateUrl: './photo-list.component.html',
   styleUrl: './photo-list.component.scss'
 })
@@ -57,6 +60,7 @@ photoList: Array<Iphoto> = [];
         this.photoList = data;
         this.isLoading = false ; 
       });
+      this.loadMovies();
     }
   
     loadMovies() {
