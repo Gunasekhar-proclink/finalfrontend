@@ -8,6 +8,9 @@ import { PhotoListComponent } from './photo-list/photo-list.component';
 import { AddPhotoComponent } from './add-photo/add-photo.component';
 import { EditPhotoComponent } from './edit-photo/edit-photo.component';
 import { PhotoDetailsComponent } from './photo-details/photo-details.component';
+import { MyphotoAddComponent } from './myphoto-add/myphoto-add.component';
+import { MyphotoEditComponent } from './myphoto-edit/myphoto-edit.component';
+import { LogoutComponent } from './logout/logout.component';
 
 export const routes: Routes = [
 
@@ -26,12 +29,9 @@ export const routes: Routes = [
         component : SignupComponent , 
       } ,
       {
-        path: 'photos', // url
+        path: 'photos',
         children: [
-          // {
-          //   path: '',
-          //   component: MovieListComponent,
-          // },
+         
           {
             path: '',
             loadComponent: () =>
@@ -39,11 +39,38 @@ export const routes: Routes = [
                 (c) => c.PhotoListComponent
               ),
           }, // lazy load
+          {
+            path: 'myphotos',
+            loadComponent: () =>
+              import('./myphotos/myphotos.component').then(
+                (c) => c.MyphotosComponent
+              ),
+          },
           { path: 'add', component: AddPhotoComponent },
           { path: 'edit/:id', component: EditPhotoComponent },
           { path: ':id', component: PhotoDetailsComponent },
         ],
       },
+      // {
+      //   path: 'photos',
+      //   children: [
+         
+      //     {
+      //       path: 'user/:username',
+      //       loadComponent: () =>
+      //         import('./myphotos/myphotos.component').then(
+      //           (c) => c.MyphotosComponent
+      //         ),
+      //     }, // lazy load
+      //     { path: 'add', component: MyphotoAddComponent },
+      //     { path: 'edit/:id', component: MyphotoEditComponent },
+      //   ],
+      // },
+
+      {
+        path : "user/logout" , 
+        component : LogoutComponent
+      } , 
       {
         path : "**" , 
         component : PagenotfoundComponent

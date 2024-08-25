@@ -1,7 +1,20 @@
 <section class="movie-list-container">
-  @if(isLoading){
+  <!-- @if(isLoading){
   <h1>Loading...</h1>
-  } @for (photo of photoList; track photo.photoId){
+  } -->
+    <div class="addmovie"><button (click)="addmovie()">AddMovie</button></div>
+  <form [formGroup]="searchForm">
+    <input placeholder="search..." formControlName="search" />
+  </form>
+  @for (photo of photoName ; track $index){
+    <h2>{{ photo.userName }}</h2>
+    } 
+  <div class="list-of-movies">@if(!isLoading && photoList.length == 0){
+    <h2>No results</h2>
+    } @if(isLoading){
+    <h2>Loading...</h2>
+    }
+   @for (photo of photoList; track photo.photoId){
   <app-photo
     [photo]="photo"
     (deleteMovieEvent)="deleteMovieP($event)"
@@ -9,6 +22,7 @@
     [id]="photo.photoId"
   />
   }
+</div>
 </section>
 
 <h1>{{ msg }}</h1>

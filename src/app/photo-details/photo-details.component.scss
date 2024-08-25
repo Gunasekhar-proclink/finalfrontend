@@ -1,37 +1,14 @@
-.movie-spec {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+body {
+  display : grid ; 
+
   
-  .movie-container {
-    //   background: orange;
-    overflow: hidden;
-  }
-  
-  .movie-poster {
-    height: 450px;
-    width: 100%;
-    object-fit: cover;
-  
-    // border-radius: 10px;
-  }
-  
-  .movie-rating {
-    font-size: 18px;
-  }
-  
-  .movie-rating,
-  .movie-title {
-    margin: 6px 0px;
-  }
-  
-  .action-buttons-container {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .movie-content {
-    max-width: 850px;
-  }
-  
+
+}
+
+img {
+  height : 500px ;
+  width : 700px ; 
+  border-radius: 20px 0px 0px 20px;
+  margin-left: 50px;
+  margin-top: 50px;
+}

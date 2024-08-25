@@ -1,11 +1,11 @@
 <!-- Todo -->
 <form [formGroup]="photoForm" (ngSubmit)="addMovie()" class="add-movie-form">
     <mat-form-field>
-      <mat-label>Name</mat-label>
+      <mat-label>Type</mat-label>
       <input
         matInput
-        placeholder="Phani the rockstar ⭐"
-        formControlName="name"
+        placeholder="Landscape "
+        formControlName="type"
       />
   
       @if(name?.touched && name?.hasError('required') ){
@@ -16,11 +16,11 @@
     </mat-form-field>
   
     <mat-form-field>
-      <mat-label>Poster</mat-label>
-      <input matInput placeholder="http://" formControlName="poster" />
+      <mat-label>ImageUrl</mat-label>
+      <input matInput placeholder="http://" formControlName="url" />
     </mat-form-field>
   
-    <mat-form-field>
+    <!-- <mat-form-field>
       <mat-label>Rating</mat-label>
       <input type="number" matInput placeholder="8" formControlName="rating" />
   
@@ -31,22 +31,22 @@
       } @if(rating?.touched && rating?.hasError('max') ){
       <mat-error>Rating is too high 😓</mat-error>
       }
-    </mat-form-field>
+    </mat-form-field> -->
   
     <mat-form-field>
-      <mat-label>Summary</mat-label>
+      <mat-label>Description</mat-label>
       <input
         matInput
-        placeholder="Your awesome summary 🎊"
-        formControlName="summary"
+        placeholder="Your awesome Description 🎊"
+        formControlName="description"
       />
     </mat-form-field>
   
-    <mat-form-field>
+    <!-- <mat-form-field>
       <mat-label>Trailer</mat-label>
       <input matInput placeholder="http://" formControlName="trailer" />
     </mat-form-field>
-  
+   -->
 
     <button mat-raised-button type="submit">Add Movie</button>
   </form>

@@ -1,9 +1,6 @@
 import { Injectable } from '@angular/core';
 import { API } from './global';
-export interface User {
-  userName: string;
-  password: string;
-}
+import {User} from './login.service'
 
 // export interface TokenResponse {
 //   msg: string;
@@ -16,13 +13,13 @@ export interface User {
 export class SignupService {
   constructor() {}
 
-  // async login(credentials: User): Promise<TokenResponse> {
-  //   return fetch(`${API}/user/login`, {
-  //     method: 'POST',
-  //     body: JSON.stringify(credentials),
-  //     headers: {
-  //       'Content-type': 'application/json',
-  //     },
-  //   }).then((res) => res.json());
-  // }
+  async signup(credentials: User) {
+    return fetch(`${API}/user/signup`, {
+      method: 'POST',
+      body: JSON.stringify(credentials),
+      headers: {
+        'Content-type': 'application/json',
+      },
+    }).then((res) => res.json());
+  }
 }

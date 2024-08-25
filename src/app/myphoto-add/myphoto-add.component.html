@@ -1,11 +1,11 @@
 <!-- Todo -->
-<form [formGroup]="photoForm" (ngSubmit)="editMovie()" class="add-movie-form">
+<form [formGroup]="photoForm" (ngSubmit)="addMovie()" class="add-movie-form">
     <mat-form-field>
-      <mat-label>Type</mat-label>
+      <mat-label>Name</mat-label>
       <input
         matInput
-        placeholder="Landscape"
-        formControlName="type"
+        placeholder="Phani the rockstar ⭐"
+        formControlName="name"
       />
   
       @if(name?.touched && name?.hasError('required') ){
@@ -16,19 +16,11 @@
     </mat-form-field>
   
     <mat-form-field>
-      <mat-label>url</mat-label>
-      <input matInput placeholder="http://" formControlName="url" />
-  
-      @if(poster?.touched && poster?.hasError('required') ){
-      <mat-error>Poster is <strong>required</strong></mat-error>
-      } @if(poster?.touched && poster?.hasError('minlength') ){
-      <mat-error>Please provide full movie poster 😁</mat-error>
-      }@if(poster?.touched && poster?.hasError('pattern') ){
-      <mat-error>Please start with <strong>https://</strong> 🧑‍🚀 </mat-error>
-      }
+      <mat-label>Poster</mat-label>
+      <input matInput placeholder="http://" formControlName="poster" />
     </mat-form-field>
   
-    <!-- <mat-form-field>
+    <mat-form-field>
       <mat-label>Rating</mat-label>
       <input type="number" matInput placeholder="8" formControlName="rating" />
   
@@ -40,21 +32,22 @@
       <mat-error>Rating is too high 😓</mat-error>
       }
     </mat-form-field>
-   -->
+  
     <mat-form-field>
-      <mat-label>Description</mat-label>
+      <mat-label>Summary</mat-label>
       <input
         matInput
-        placeholder="Your awesome Description 🎊"
-        formControlName="description"
+        placeholder="Your awesome summary 🎊"
+        formControlName="summary"
       />
     </mat-form-field>
   
-    <!-- <mat-form-field>
+    <mat-form-field>
       <mat-label>Trailer</mat-label>
       <input matInput placeholder="http://" formControlName="trailer" />
     </mat-form-field>
-   -->
-    <button mat-raised-button type="submit">{{ "Save" | uppercase }}</button>
+  
+
+    <button mat-raised-button type="submit">Add Movie</button>
   </form>
   

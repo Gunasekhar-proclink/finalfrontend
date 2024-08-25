@@ -1,37 +1,15 @@
 <mat-card class="movie-container">
-    <img src="{{ photo.url }}" alt="{{ photo.url }}" class="movie-poster" />
-    <mat-card-content>
-      <div class="movie-spec">
-        <h2 class="movie-title">
-          {{ photo.username}}
-          <button
-            mat-icon-button
-            aria-label="Toggle summary"
-            (click)="toggleSummary()"
-          >
-            <mat-icon>{{
-              show ? "keyboard_arrow_up" : "keyboard_arrow_down"
-            }}</mat-icon>
-          </button>
+  <img src="{{ photo.url }}" alt="{{ photo.userName }}" class="movie-poster" />
+  <mat-card-content>
+    <div class="movie-spec">
+      <h2 class="movie-title">{{ photo.userName | uppercase }}</h2>
+    </div>
+    
+    <p *ngIf="show" class="movie-summary">{{ photo.description }}</p>
   
-          <button
-            mat-icon-button
-            aria-label="Details of movie"
-            routerLink="/photos/{{ id }}"
-          >
-            <mat-icon>info</mat-icon>
-          </button>
-        </h2>
-        <p class="movie-rating">⭐ {{ photo.createdAt }}</p>
-      </div>
-  
-      @if(show){
-      <p class="movie-summary">{{ photo.description }}</p>
-      }
-  
+    <ng-container *ngIf="canEditOrDelete(); else noEditDelete">
       <div class="action-buttons-container">
-  
-        <div>
+        <div class="crud">
           <button
             mat-icon-button
             aria-label="Delete movie"
@@ -42,14 +20,24 @@
           </button>
           <button
             mat-icon-button
-            aria-label="Delete movie"
+            aria-label="Edit movie"
             color="primary"
             (click)="editMovie()"
           >
             <mat-icon>edit</mat-icon>
           </button>
+          <button
+            mat-icon-button
+            aria-label="Details of movie"
+            routerLink="/photos/{{ id }}"
+          >
+            <mat-icon>info</mat-icon>
+          </button>
         </div>
       </div>
-    </mat-card-content>
-  </mat-card>
-  
+    </ng-container>
+    <ng-template #noEditDelete>
+      <!-- Optionally, you can add a message or leave it empty -->
+    </ng-template>
+  </mat-card-content>
+</mat-card>

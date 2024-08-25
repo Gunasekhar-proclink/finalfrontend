@@ -1,42 +1,37 @@
 import { Component } from '@angular/core';
-import { EventEmitter, Input, Output } from '@angular/core'; 
-import { Iphoto } from "../photos.service";
-import { Router, RouterLink } from '@angular/router';
-import { PhotosService } from "../photos.service"; 
 import { MatButtonModule } from '@angular/material/button';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
-import { CommonModule } from '@angular/common';
-import { UpperCasePipe } from '@angular/common';
+import { EventEmitter, Input, Output } from '@angular/core'; 
+import { MyphotoService } from '../myphoto.service';
+import { Router, RouterLink } from '@angular/router';
+import { Iphoto } from '../photos.service';
+import { CommonModule, UpperCasePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-photo',
+  selector: 'app-myphoto-photo',
   standalone: true,
-  imports: [
-    MatButtonModule,
+  imports: [MatButtonModule,
     MatBadgeModule,
     MatIconModule,
     MatCardModule,
-    RouterLink,
-    CommonModule
-  ],
-  templateUrl: './photo.component.html',
-  styleUrls: ['./photo.component.scss']
+    RouterLink, CommonModule],
+  templateUrl: './myphoto-photo.component.html',
+  styleUrl: './myphoto-photo.component.scss'
 })
-export class PhotoComponent {
-  @Input() photo!: any;
+export class MyphotoPhotoComponent {
+  @Input() photo!: Iphoto;
+
   @Input() id!: string;
   @Output() deleteMovieEvent = new EventEmitter<Iphoto>();
   @Output() editMovieEvent = new EventEmitter<Iphoto>();
 
   show = true;
 
-  constructor() {}
-
-  // toggleSummary() {
-  //   this.show = !this.show;
-  // }
+  toggleSummary() {
+    this.show = !this.show;
+  }
 
   deleteMovie() {
     console.log('Child ❌', this.photo);
@@ -44,11 +39,10 @@ export class PhotoComponent {
   }
 
   editMovie() {
-    console.log('Child ✏️', this.photo);
+    console.log('Child ❌', this.photo);
     this.editMovieEvent.emit(this.photo);
   }
 
- 
   canEditOrDelete(): boolean {
     const roleId = localStorage.getItem('roleId');
     const username = localStorage.getItem('userName')

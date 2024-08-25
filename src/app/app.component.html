@@ -1,4 +1,24 @@
-
-<!-- <app-home></app-home> -->
-
-<router-outlet></router-outlet>
+<div class="main">
+  <header>
+    <nav class="navbar">
+      <div class="logo">Pixabay</div>
+      <div class="nav-links">
+        <a mat-raised-button routerLink="" color="primary">
+          Home
+          <mat-icon aria-hidden="false" aria-label="Home icon">home</mat-icon>
+        </a>
+        <a mat-raised-button routerLink="/photos" color="primary">Photos</a>
+        <a mat-raised-button routerLink="photos/myphotos" color="primary">My Photos</a>
+        <div class="auth-links">
+          @if(isLoggedIn) {
+            <a mat-raised-button (click)="logout()" class="auth-button">Logout</a>
+          } @else {
+            <a mat-raised-button routerLink="/user/signup" class="auth-button">Signup</a>
+            <a mat-raised-button routerLink="/user/login" class="auth-button">Login</a>
+          }
+        </div>
+      </div>
+    </nav>
+  </header>
+  <router-outlet></router-outlet>
+</div>

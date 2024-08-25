@@ -10,21 +10,20 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Iphoto } from '../photos.service';
-import { PhotosService } from '../photos.service';
-import { UpperCasePipe } from '@angular/common';
 import { MyphotoService } from '../myphoto.service';
+import { UpperCasePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-edit-photo',
+  selector: 'app-myphoto-edit',
   standalone: true,
-  imports: [ ReactiveFormsModule,
+  imports: [ReactiveFormsModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,UpperCasePipe,],
-  templateUrl: './edit-photo.component.html',
-  styleUrl: './edit-photo.component.scss'
+  templateUrl: './myphoto-edit.component.html',
+  styleUrl: './myphoto-edit.component.scss'
 })
-export class EditPhotoComponent {
+export class MyphotoEditComponent {
 
   photoForm: FormGroup;
 
@@ -37,7 +36,7 @@ export class EditPhotoComponent {
     // formGroup -> formControlName
     this.photoForm = this.fb.group({
       photoId: "",
-      type: ['', [Validators.required, Validators.minLength(2)]],
+      type : ['', [Validators.required, Validators.minLength(2)]],
       url: [
         '',
         [
@@ -47,7 +46,6 @@ export class EditPhotoComponent {
         ],
       ],
       description: '',
-
     });
   }
 
@@ -71,7 +69,7 @@ export class EditPhotoComponent {
 
       this.photoService.editMovie(updatedMovie).then(() => {
         // Move to movies page
-        this.router.navigate(['photos']);
+        this.router.navigate(['movies']);
       });
     }
   }

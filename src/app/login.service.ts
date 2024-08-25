@@ -8,6 +8,8 @@ export interface User {
 export interface TokenResponse {
   msg: string;
   token: string;
+  roleId : string
+  username : string
 }
 
 @Injectable({

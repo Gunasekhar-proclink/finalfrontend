@@ -9,6 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { LoginService } from '../login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,7 @@ import { LoginService } from '../login.service';
 })
 export class LoginComponent {
   loginForm!: FormGroup;
-  constructor(private fb: FormBuilder, private loginService: LoginService) {
+  constructor(private fb: FormBuilder, private loginService: LoginService, private router:Router) {
     this.loginForm = this.fb.group({
       userName: ['', [Validators.required, Validators.minLength(3)]],
       password: '',
@@ -38,7 +39,10 @@ export class LoginComponent {
   login() {
     console.log(this.loginForm.value);
     this.loginService.login(this.loginForm.value).then((data) => {
-      localStorage.setItem('token', data.token);
-    });
+      localStorage.setItem('token', data.token) ;
+      localStorage.setItem('roleId' , data.roleId) ; 
+      localStorage.setItem('userName' ,data.username );
+      this.router.navigate(['/photos'])
+    }); 
   }
 }

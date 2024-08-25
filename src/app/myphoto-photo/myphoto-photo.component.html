@@ -1,0 +1,54 @@
+<mat-card class="movie-container">
+  <img src="{{ photo.url }}" alt="{{ photo.url }}" class="movie-poster" />
+  <mat-card-content>
+    <div class="movie-spec">
+      <h2 class="movie-title">
+        {{ photo.userName | uppercase}}
+        
+      </h2>
+      <!-- <p class="movie-rating">⭐ {{ photo.createdAt }}</p> -->
+    </div>
+  
+    <p *ngIf="show" class="movie-summary">{{ photo.description }}</p>
+  
+    <ng-container *ngIf="canEditOrDelete(); else noEditDelete">
+      <div class="action-buttons-container">
+        <div class = "crud">
+          <div>
+            <button
+              mat-icon-button
+              aria-label="Delete movie"
+              color="warn"
+              (click)="deleteMovie()"
+            >
+              <mat-icon>delete</mat-icon>
+          
+          </button>
+        </div>
+          <div>
+            <button
+              mat-icon-button
+              aria-label="Edit movie"
+              color="primary"
+              (click)="editMovie()"
+            >
+              <mat-icon>edit</mat-icon>
+            </button>
+          </div>
+          <div>
+            <button
+            mat-icon-button
+            aria-label="Details of movie"
+            routerLink="/photos/{{ id }}"
+                    >
+            <mat-icon>info</mat-icon>
+                    </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #noEditDelete>
+      <!-- Optionally, you can add a message or leave it empty -->
+    </ng-template>
+  </mat-card-content>
+</mat-card>
