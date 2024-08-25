@@ -25,7 +25,7 @@ export class MyphotoService {
   }
 
   async editMovie(updatedPhoto: Iphoto) { // working 
-    const res = await fetch(`${API}/photos/myphotos/`, {
+    const res = await fetch(`${API}/photos/${updatedPhoto.photoId}`, {
       method: 'PUT',
       body: JSON.stringify(updatedPhoto),
       headers: {
@@ -47,14 +47,14 @@ export class MyphotoService {
 
   async deleteMovie(photo: Iphoto) { 
         // working 
-    const res = await fetch(`${API}/photos/myphotos/${photo.photoId}`, { method: 'Delete' , headers : {
+    const res = await fetch(`${API}/photos/${photo.photoId}`, { method: 'Delete' , headers : {
       'x-auth-token' : localStorage.getItem('token') as string , 
     } });
     return await res.json();
   }
 
   async getMovieByIdP(id: string): Promise<Iphoto> { // working 
-    const res = await fetch(`${API}/photos/myphotos/${id}`, {
+    const res = await fetch(`${API}/photos/${id}`, {
       method: 'GET',
       headers: {
         'x-auth-token': localStorage.getItem('token') as string,

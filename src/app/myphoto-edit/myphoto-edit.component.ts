@@ -35,6 +35,7 @@ export class MyphotoEditComponent {
   ) {
     // formGroup -> formControlName
     this.photoForm = this.fb.group({
+      photoId: "",
       type : ['', [Validators.required, Validators.minLength(2)]],
       url: [
         '',
